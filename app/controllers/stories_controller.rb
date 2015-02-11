@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
 
   # GET /stories
   # GET /stories.json
-  def index
+  def list_stories
     @stories = Story.all
   end
 
@@ -23,7 +23,7 @@ class StoriesController < ApplicationController
 
   # POST /stories
   # POST /stories.json
-  def create
+  def create_story(id, des)
     @story = Story.new(story_params)
 
     respond_to do |format|
@@ -53,13 +53,19 @@ class StoriesController < ApplicationController
 
   # DELETE /stories/1
   # DELETE /stories/1.json
-  def destroy
+  def delete_story(id)
     @story.destroy
     respond_to do |format|
       format.html { redirect_to stories_url }
       format.json { head :no_content }
     end
   end
+
+  def complete_story(id)
+    #mark as complete
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

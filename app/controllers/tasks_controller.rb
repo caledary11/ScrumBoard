@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   # GET /tasks.json
-  def index
+  def list_tasks(story_id)
     @tasks = Task.all
   end
 
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
 
   # POST /tasks
   # POST /tasks.json
-  def create
+  def create_task(story_id, id, des)
     @task = Task.new(task_params)
 
     respond_to do |format|
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
-  def update
+  def update_task(story_id, id, des)
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -53,12 +53,16 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
-  def destroy
+  def delete_task(story_id, id)
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url }
       format.json { head :no_content }
     end
+  end
+
+  def move_task(story_id, id, column)
+    #move task to other column
   end
 
   private
