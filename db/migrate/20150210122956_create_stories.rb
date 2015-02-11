@@ -1,7 +1,9 @@
 class CreateStories < ActiveRecord::Migration
   def change
-    create_table :stories do |t|
+    create_table :stories, {id: false} do |t|
       t.string :description
+      t.string :id
+      t.boolean :complete
 
       t.timestamps
     end

@@ -3,8 +3,12 @@ class StoriesController < ApplicationController
 
   # GET /stories
   # GET /stories.json
-  def list_stories
+  def index
     @stories = Story.all
+  end
+
+  def list_stories
+    put @stories = Story.all
   end
 
   # GET /stories/1
@@ -23,8 +27,22 @@ class StoriesController < ApplicationController
 
   # POST /stories
   # POST /stories.json
-  def create_story(id, des)
+  def create
     @story = Story.new(story_params)
+
+    respond_to do |format|
+      if @story.save
+        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @story }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @story.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_story(id, des)
+    @story = Story.new(id: id, description: des)
 
     respond_to do |format|
       if @story.save
@@ -53,8 +71,16 @@ class StoriesController < ApplicationController
 
   # DELETE /stories/1
   # DELETE /stories/1.json
-  def delete_story(id)
+  def destroy
     @story.destroy
+    respond_to do |format|
+      format.html { redirect_to stories_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def delete_story(id)
+    @story.find(params[id: id]).destroy
     respond_to do |format|
       format.html { redirect_to stories_url }
       format.json { head :no_content }
@@ -63,6 +89,7 @@ class StoriesController < ApplicationController
 
   def complete_story(id)
     #mark as complete
+    @story.find(params[id: id]).status = true
   end
 
 
