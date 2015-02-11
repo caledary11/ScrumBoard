@@ -1,0 +1,33 @@
+<h1>Listing columns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>To do</th>
+      <th>In process</th>
+      <th>To verify</th>
+      <th>Done</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @columns.each do |column| %>
+      <tr>
+        <td><%= column.To_Do %></td>
+        <td><%= column.In_Process %></td>
+        <td><%= column.To_Verify %></td>
+        <td><%= column.Done %></td>
+        <td><%= link_to 'Show', column %></td>
+        <td><%= link_to 'Edit', edit_column_path(column) %></td>
+        <td><%= link_to 'Destroy', column, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Column', new_column_path %>

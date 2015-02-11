@@ -1,0 +1,33 @@
+<%= form_for(@column) do |f| %>
+  <% if @column.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@column.errors.count, "error") %> prohibited this column from being saved:</h2>
+
+      <ul>
+      <% @column.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :To_Do %><br>
+    <%= f.text_field :To_Do %>
+  </div>
+  <div class="field">
+    <%= f.label :In_Process %><br>
+    <%= f.text_field :In_Process %>
+  </div>
+  <div class="field">
+    <%= f.label :To_Verify %><br>
+    <%= f.text_field :To_Verify %>
+  </div>
+  <div class="field">
+    <%= f.label :Done %><br>
+    <%= f.text_field :Done %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

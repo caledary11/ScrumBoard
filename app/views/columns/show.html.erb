@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>To do:</strong>
+  <%= @column.To_Do %>
+</p>
+
+<p>
+  <strong>In process:</strong>
+  <%= @column.In_Process %>
+</p>
+
+<p>
+  <strong>To verify:</strong>
+  <%= @column.To_Verify %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @column.Done %>
+</p>
+
+<%= link_to 'Edit', edit_column_path(@column) %> |
+<%= link_to 'Back', columns_path %>
