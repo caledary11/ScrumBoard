@@ -1,9 +1,10 @@
 class CreateTasks < ActiveRecord::Migration
   def change
-    create_table :tasks, {id: false} do |t|
+    create_table :tasks do |t|
       t.string :description
-      t.string :id
-      t.string :column
+      t.string :tid
+      t.integer :state
+      t.index :state
       t.belongs_to :story, index: true
 
       t.timestamps

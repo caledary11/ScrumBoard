@@ -1,6 +1,4 @@
 ScrumBoard::Application.routes.draw do
-  resources :columns
-
   resources :tasks
 
   resources :stories

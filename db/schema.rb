@@ -11,30 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211041837) do
+ActiveRecord::Schema.define(version: 20150210125004) do
 
-  create_table "columns", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "stories", id: false, force: true do |t|
+  create_table "stories", force: true do |t|
     t.string   "description"
-    t.string   "id"
+    t.string   "sid"
     t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tasks", id: false, force: true do |t|
+  create_table "tasks", force: true do |t|
     t.string   "description"
-    t.string   "id"
-    t.string   "column"
+    t.string   "tid"
+    t.integer  "state"
     t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "tasks", ["state"], name: "index_tasks_on_state"
   add_index "tasks", ["story_id"], name: "index_tasks_on_story_id"
 
 end
