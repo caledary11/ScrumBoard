@@ -1,9 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  description: MyText
-  story_id: 
+  description: MyString
+  story_id: one
+  tid: MyString
+  state: MyInteger
+
 
 two:
-  description: MyText
-  story_id: 
+  description: MyString
+  story_id: two
+  tid: MyString
+  state: MyInteger
+
+setup:
+  description: Set up formula
+  story_id: usercount
+  tid: T1
+  state: 0

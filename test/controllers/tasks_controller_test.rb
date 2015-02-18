@@ -3,6 +3,12 @@ require 'test_helper'
 class TasksControllerTest < ActionController::TestCase
   setup do
     @task = tasks(:one)
+    @update = {
+        description: 'Set up formula',
+        story_id: 'S1',
+        tid: 'T1',
+        state: 1
+    }
   end
 
   test "should get index" do
@@ -18,7 +24,7 @@ class TasksControllerTest < ActionController::TestCase
 
   test "should create task" do
     assert_difference('Task.count') do
-      post :create, task: { description: @task.description, story_id: @task.story_id }
+      post :create, task: @update
     end
 
     assert_redirected_to task_path(assigns(:task))
@@ -35,7 +41,7 @@ class TasksControllerTest < ActionController::TestCase
   end
 
   test "should update task" do
-    patch :update, id: @task, task: { description: @task.description, story_id: @task.story_id }
+    patch :update, id: @task, task: @update
     assert_redirected_to task_path(assigns(:task))
   end
 

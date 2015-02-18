@@ -1,7 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  description: MyText
+  description: MyString
+  sid: MyString
+  complete: MyBoolean
 
 two:
-  description: MyText
+  description: MyString
+  sid: MyString
+  complete: MyBoolean
+
+usercount:
+  description: User wants to count
+  sid: S1
+  complete: false
